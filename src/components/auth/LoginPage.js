@@ -64,7 +64,7 @@ export const LoginPage = () => {
                         </p>
                     </div>
                 </div>
-                <Link to="/auth/resgister" className="link">
+                <Link to="/auth/register" className="link">
                     Create a new account
                 </Link>
             </form>
