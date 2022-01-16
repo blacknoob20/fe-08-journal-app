@@ -1,10 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import validator from 'validator';
 
 import { useForm } from '../../hooks/useForm';
+import { removeError, setError } from '../actions/ui';
 
 export const RegisterPage = () => {
+    const dispatch = useDispatch();
+    const {msgError} = useSelector(state => state.ui);
     const [formValues, handleInputChange] = useForm({
         name: 'Evelin',
         email: 'evelinfranco7@gmail.com',
@@ -26,14 +30,19 @@ export const RegisterPage = () => {
     const isFormValid = () => {
         if (name.trim().length === 0) {
             console.log('Name is required');
+            dispatch(setError('Name is required'));
             return false;
         } else if (!validator.isEmail(email)) {
             console.log('Email is not valid');
+            dispatch(setError('Email is not valid'));
             return false;
         } else if (password !== password2 || password.length < 5) {
             console.log('Password should be at least 6 characters and match each other');
+            dispatch(setError('Password should be at least 6 characters and match each other'));
             return false;
         }
+
+        dispatch(removeError());
 
         return true;
     }
@@ -43,6 +52,12 @@ export const RegisterPage = () => {
         <>
             <h1 className="auth__title">Register Page</h1>
             <form onSubmit={handleRegister}>
+                {
+                    msgError &&
+                    <div className='auth_alert-error'>
+                        {msgError}
+                    </div>
+                }
                 <input
                     type="text"
                     placeholder="Name"
