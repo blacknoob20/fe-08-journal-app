@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import validator from 'validator';
 
 import { useForm } from '../../hooks/useForm';
+import { startRegisterWithEmailPassword } from '../actions/auth';
 import { removeError, setError } from '../actions/ui';
 
 export const RegisterPage = () => {
     const dispatch = useDispatch();
-    const {msgError} = useSelector(state => state.ui);
+    const { msgError } = useSelector(state => state.ui);
     const [formValues, handleInputChange] = useForm({
         name: 'Evelin',
         email: 'evelinfranco7@gmail.com',
@@ -23,7 +24,7 @@ export const RegisterPage = () => {
         console.log(name, email, password, password2);
         if (isFormValid()) {
             console.log('Form is valid!');
-
+            dispatch(startRegisterWithEmailPassword(email, password));
         }
     }
 
