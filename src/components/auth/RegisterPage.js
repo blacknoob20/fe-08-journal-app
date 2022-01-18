@@ -93,12 +93,16 @@ export const RegisterPage = () => {
                     value={password2}
                     onChange={handleInputChange}
                 />
+                <br />
+                <br />
                 <button
                     type="submit"
                     className="btn btn-primary btn-block"
                 >
                     Register
                 </button>
+                <br />
+                <br />
                 <Link to="/auth/login" className="link">
                     Already registered.?
                 </Link>

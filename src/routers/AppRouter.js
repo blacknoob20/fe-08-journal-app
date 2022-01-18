@@ -33,7 +33,7 @@ export const AppRouter = () => {
 
     if (checking) {
         return (
-            <h1>Espere...</h1>
+            <h1>Please wait...</h1>
         )
     }
 

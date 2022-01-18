@@ -6,7 +6,7 @@ import { startGoogleLogin, startLoginEmailPass } from '../actions/auth';
 
 export const LoginPage = () => {
     const dispatch = useDispatch();
-    const {loading} = useSelector(state => state.ui);
+    const { loading } = useSelector(state => state.ui);
     const [formValues, handleInputChange] = useForm({
         email: 'blacknoob20@gmail.com',
         password: '123456'
@@ -44,6 +44,8 @@ export const LoginPage = () => {
                     value={password}
                     onChange={handleInputChange}
                 />
+                <br />
+                <br />
                 <button
                     type="submit"
                     className="btn btn-primary btn-block"
@@ -51,7 +53,10 @@ export const LoginPage = () => {
                 >
                     Login
                 </button>
+                <br />
+                <br />
                 <hr />
+                <br />
                 <div className="auth__social-networks">
                     <p>Login with social network</p>
                     <div
@@ -66,6 +71,7 @@ export const LoginPage = () => {
                         </p>
                     </div>
                 </div>
+                <br />
                 <Link to="/auth/register" className="link">
                     Create a new account
                 </Link>
