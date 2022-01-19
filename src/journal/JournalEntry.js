@@ -1,27 +1,31 @@
 import React from 'react';
+import moment from 'moment';
+import 'moment/locale/es';
 
-export const JournalEntry = () => {
+export const JournalEntry = ({ id, date, title, body, url }) => {
+    const noteDate = moment(date).locale('es');
+
     return (
         <div className="journal__entry">
             <div
                 className="jouranl__entry-picture"
                 style={{
                     backgroundSize: 'cover',
-                    backgroundImage: 'url(https://th.bing.com/th/id/R.99cb7a88cc3e20e78e18ba7aa6c6ad7b?rik=SZQbCF3eH9aLPA&pid=ImgRaw&r=0)'
+                    backgroundImage: `url(${url})`
                 }}
             >
             </div>
             <div className="journal__entry-body">
                 <p className="journal__entry-title">
-                    Un nuevo dia
+                    {title}
                 </p>
                 <p className="journal__entry-content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    {body}
                 </p>
             </div>
             <div className="journal__entry-date-box">
-                <span>Monday</span>
-                <h4>28</h4>
+                <span>{noteDate.format('dddd')}</span>
+                <h4>{noteDate.format('d')}</h4>
             </div>
         </div>
     )
