@@ -8,12 +8,18 @@ const initialState = {
 export const noteReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.notesActiveEntry:
-            return{
+            return {
                 ...state,
-                active:{
+                active: {
                     ...action.payload
                 }
             };
+
+        case types.notesLoadEntry:
+            return {
+                ...state,
+                notes: [...action.payload]
+            }
 
         default:
             return state;
