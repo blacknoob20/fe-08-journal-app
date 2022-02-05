@@ -14,10 +14,17 @@ export const NotesAppBar = () => {
         <div className="notes__appbar">
             <span>28 de agosto 2020</span>
             <div>
-                <button className="btn">
+                <button
+                    name="btnPicture"
+                    className="btn"
+                >
                     Picture
                 </button>
-                <button className="btn" onClick={handleSave}>
+                <button
+                    name="btnSave"
+                    className="btn"
+                    onClick={handleSave}
+                >
                     Save
                 </button>
             </div>
