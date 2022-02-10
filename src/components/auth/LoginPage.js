@@ -26,7 +26,10 @@ export const LoginPage = () => {
     return (
         <>
             <h1 className="auth__title">Login Page</h1>
-            <form onSubmit={handleLogin}>
+            <form
+                onSubmit={handleLogin}
+                className="animate__animated animate__fadeIn animate__faster"
+            >
                 <input
                     type="text"
                     placeholder="email"
