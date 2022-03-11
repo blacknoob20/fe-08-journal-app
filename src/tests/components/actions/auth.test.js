@@ -2,8 +2,8 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import '@testing-library/jest-dom';
 
-import { login, logout, startLoginEmailPass, startLogout } from '../../components/actions/auth';
-import { types } from '../../types/types';
+import { login, logout, startLoginEmailPass, startLogout } from '../../../components/actions/auth';
+import { types } from '../../../types/types';
 import { async } from '@firebase/util';
 
 const middlewares = [thunk];

@@ -9,18 +9,18 @@ import thunk from 'redux-thunk';
 import { readFileSync, writeFileSync } from 'fs';
 
 import { deleteDoc, doc, getDoc } from 'firebase/firestore';
-import { db } from '../../firebase/firebaseConfig';
+import { db } from '../../../firebase/firebaseConfig';
 
-import { startLoadingNotes, startNewNote, startSaveNotes, startUploading } from '../../components/actions/notes';
-import { types } from '../../types/types';
+import { startLoadingNotes, startNewNote, startSaveNotes, startUploading } from '../../../components/actions/notes';
+import { types } from '../../../types/types';
 
 /**
  * Esta importacion se hace necesaria, porque la utiliza dentro de jest.mock()
  * no borrarla solo porque el editor la marque como no utitlizada
  */
-import { fileUpload } from '../../helpers/fileUpload';
+import { fileUpload } from '../../../helpers/fileUpload';
 
-jest.mock('../../helpers/fileUpload', () => ({
+jest.mock('../../../helpers/fileUpload', () => ({
     fileUpload: jest.fn( () => {
         return 'https://media.redadn.es/series/p/school-rumble_2374.jpg';
         // return Promise.resolve('https://media.redadn.es/series/p/school-rumble_2374.jpg');
