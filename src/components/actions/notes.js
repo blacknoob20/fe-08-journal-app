@@ -16,7 +16,7 @@ export const startNewNote = () => {
         }
 
         const docRef = await addDoc(collection(db, `${uid}/journal/notes`), newNote);
-        console.log(activeNote(docRef.id, newNote));
+
         dispatch(activeNote(docRef.id, newNote));
         dispatch(addNewNote(docRef.id, newNote));
     };
@@ -53,7 +53,6 @@ export const setNotes = (notes) => ({
 
 export const startSaveNotes = (note) => {
     return (async (dispatch, getState) => {
-        console.log(note.id);
         const { uid } = getState().auth;
         const noteToFirestore = { ...note };
 
@@ -89,7 +88,6 @@ export const refreshNote = (id, note) => ({
 export const startUploading = (file) => {
     return async (dispatch, getState) => {
         const { active: activeNote } = getState().notes;
-        console.log(activeNote.id === undefined);
 
         Swal.fire({
             title: 'Uploading...',
@@ -100,10 +98,15 @@ export const startUploading = (file) => {
             }
         });
 
-        const fileUrl = await fileUpload(file);
+        try {
+            const fileUrl = await fileUpload(file);
 
-        activeNote.url = fileUrl;
-        dispatch(startSaveNotes(activeNote));
+            activeNote.url = fileUrl;
+            dispatch(startSaveNotes(activeNote));
+        } catch (error) {
+            console.log(error);
+        }
+
         Swal.close();
     }
 };

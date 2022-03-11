@@ -18,7 +18,8 @@ export const startLoginEmailPass = (email, password) => {
         dispatch(startLoading());
 
         const auth = getAuth();
-        signInWithEmailAndPassword(auth, email, password)
+
+        return signInWithEmailAndPassword(auth, email, password)
             .then(({ user: userCredential }) => {
                 // console.log(userCredential);
                 dispatch(login(userCredential.uid, userCredential.displayName));
@@ -38,7 +39,6 @@ export const startGoogleLogin = () => {
         const auth = getAuth();
         signInWithPopup(auth, googleAuthProvider)
             .then(({ user: userCredentials }) => {
-                console.log(userCredentials);
                 dispatch(login(userCredentials.uid, userCredentials.displayName))
             });
     }

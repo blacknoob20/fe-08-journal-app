@@ -24,7 +24,6 @@ describe('Pruebas en fileUpload', () => {
         await cloudinary.v2.api.delete_resources(imageID, {},
             (error, result) => {
                 const { deleted } = result;
-                console.log(deleted);
             }
         );
     });

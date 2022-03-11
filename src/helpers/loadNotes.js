@@ -4,9 +4,8 @@ import { db } from '../firebase/firebaseConfig';
 
 export const loadNotes = async (uid) => {
     const notesSnap = await getDocs(collection(db, `${uid}/journal/notes`));
-    const notes = [];
+    let notes = [];
 
-    // console.log(notesSnap.data());
     notesSnap.forEach(snapHijo => {
         notes.push({
             id: snapHijo.id,

@@ -7,20 +7,21 @@ import { GoogleAuthProvider } from 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyAJ9h5xJJ1NY8vMpaO_XrA11OYMNC9HC6U',
-  authDomain: 'react-apps-cursos-e57bc.firebaseapp.com',
-  projectId: 'react-apps-cursos-e57bc',
-  storageBucket: 'react-apps-cursos-e57bc.appspot.com',
-  messagingSenderId: '239300112296',
-  appId: '1:239300112296:web:cca9cd20e352ece91a379d'
+    apiKey: process.env.REACT_APP_APIKEY,
+    authDomain: process.env.REACT_APP_AUTHDOMAIN,
+    projectId: process.env.REACT_APP_PROJECTID,
+    storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+    appId: process.env.REACT_APP_APPID,
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
 const googleAuthProvider = new GoogleAuthProvider();
 
-export{
+export {
     db,
     googleAuthProvider,
     app
