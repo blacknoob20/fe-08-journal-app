@@ -21,7 +21,7 @@ export const RegisterPage = () => {
 
     const handleRegister = (e) => {
         e.preventDefault();
-        console.log(name, email, password, password2);
+        // console.log(name, email, password, password2);
         if (isFormValid()) {
             console.log('Form is valid!');
             dispatch(startRegisterWithEmailPassword(email, password));
@@ -30,15 +30,15 @@ export const RegisterPage = () => {
 
     const isFormValid = () => {
         if (name.trim().length === 0) {
-            console.log('Name is required');
+            // console.log('Name is required');
             dispatch(setError('Name is required'));
             return false;
         } else if (!validator.isEmail(email)) {
-            console.log('Email is not valid');
+            // console.log('Email is not valid');
             dispatch(setError('Email is not valid'));
             return false;
         } else if (password !== password2 || password.length < 5) {
-            console.log('Password should be at least 6 characters and match each other');
+            // console.log('Password should be at least 6 characters and match each other');
             dispatch(setError('Password should be at least 6 characters and match each other'));
             return false;
         }
